@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_5f642233d8c18ff8e9066140986ff308 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_5f642233d8c18ff8e9066140986ff308" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_5f642233d8c18ff8e9066140986ff308 = L.map(
+                "map_5f642233d8c18ff8e9066140986ff308",
+                {
+                    center: [41.3775, 64.5853],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_5f642233d8c18ff8e9066140986ff308);
+
+            
+
+        
+    
+            var tile_layer_91513f7d305e575966ad1ff8fd128ec4 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "Tiles \u00a9 Esri",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+  "errorTileUrl": "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+}
+
+            );
+        
+    
+            tile_layer_91513f7d305e575966ad1ff8fd128ec4.addTo(map_5f642233d8c18ff8e9066140986ff308);
+        
+    
+            var tile_layer_208608a4f595da87889ec563ba61b404 = L.tileLayer(
+                "https://{s}.tile.openstreetmap.fr/hot/{z}/{y}/{x}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u00a9 OpenStreetMap contributors \u2022 HOT",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+  "errorTileUrl": "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+}
+
+            );
+        
+    
+            tile_layer_208608a4f595da87889ec563ba61b404.addTo(map_5f642233d8c18ff8e9066140986ff308);
+        
+    
+            var marker_cluster_8a4d09694bd0c37406323fb47d2b66bc = L.markerClusterGroup(
+                {
+}
+            );
+        
+    
+            var marker_e7b9134dfd6aad41dbc67d4bdaa4ad36 = L.marker(
+                [41.2995, 69.2401],
+                {
+}
+            ).addTo(marker_cluster_8a4d09694bd0c37406323fb47d2b66bc);
+        
+    
+            var icon_74ec2a6eaf2858d12b09acdd5f52a51b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25c311585800122b965b4e55d1828281 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_26a1606d5c473120561afa30b21ab440 = $(`<div id="html_26a1606d5c473120561afa30b21ab440" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 240px;">             <h4 style="margin: 0 0 8px 0;">Tashkent Region</h4>             <p style="margin: 0 0 6px 0;"><strong>Activity:</strong> Urban/industrial thermal anomaly near Tashkent</p>             <p style="margin: 0 0 6px 0;"><strong>Confidence:</strong> High confidence</p>             <p style="margin: 0;"><strong>Coordinates:</strong> 41.2995, 69.2401</p>         </div>         </div>`)[0];
+                popup_25c311585800122b965b4e55d1828281.setContent(html_26a1606d5c473120561afa30b21ab440);
+            
+        
+
+        marker_e7b9134dfd6aad41dbc67d4bdaa4ad36.bindPopup(popup_25c311585800122b965b4e55d1828281)
+        ;
+
+        
+    
+    
+            marker_e7b9134dfd6aad41dbc67d4bdaa4ad36.bindTooltip(
+                `<div>
+                     Tashkent Region • High confidence
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e7b9134dfd6aad41dbc67d4bdaa4ad36.setIcon(icon_74ec2a6eaf2858d12b09acdd5f52a51b);
+            
+    
+            var marker_59e10d26896651004d39b028b23a0444 = L.marker(
+                [40.1039, 65.3744],
+                {
+}
+            ).addTo(marker_cluster_8a4d09694bd0c37406323fb47d2b66bc);
+        
+    
+            var icon_35b7fa22f42f3034488f1db50d2ea6a3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b3e2e764865f1ce2d9031eae7fc90944 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_ea4834ad9cb1347e308d4514e0be1d15 = $(`<div id="html_ea4834ad9cb1347e308d4514e0be1d15" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 240px;">             <h4 style="margin: 0 0 8px 0;">Navoiy</h4>             <p style="margin: 0 0 6px 0;"><strong>Activity:</strong> Mining and industrial heat point</p>             <p style="margin: 0 0 6px 0;"><strong>Confidence:</strong> Moderate confidence</p>             <p style="margin: 0;"><strong>Coordinates:</strong> 40.1039, 65.3744</p>         </div>         </div>`)[0];
+                popup_b3e2e764865f1ce2d9031eae7fc90944.setContent(html_ea4834ad9cb1347e308d4514e0be1d15);
+            
+        
+
+        marker_59e10d26896651004d39b028b23a0444.bindPopup(popup_b3e2e764865f1ce2d9031eae7fc90944)
+        ;
+
+        
+    
+    
+            marker_59e10d26896651004d39b028b23a0444.bindTooltip(
+                `<div>
+                     Navoiy • Moderate confidence
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_59e10d26896651004d39b028b23a0444.setIcon(icon_35b7fa22f42f3034488f1db50d2ea6a3);
+            
+    
+            var marker_610c1515e511ca8f0140f77d95074cd9 = L.marker(
+                [39.6542, 66.9597],
+                {
+}
+            ).addTo(marker_cluster_8a4d09694bd0c37406323fb47d2b66bc);
+        
+    
+            var icon_623ed91f8f6975ff0778c0fbc190ae09 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8815f825bd5078837c7d38944d291c72 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_26cc98fc7e4afa7f56a34e9ffd0e2a6e = $(`<div id="html_26cc98fc7e4afa7f56a34e9ffd0e2a6e" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 240px;">             <h4 style="margin: 0 0 8px 0;">Samarkand</h4>             <p style="margin: 0 0 6px 0;"><strong>Activity:</strong> Agricultural burning and field heat anomaly</p>             <p style="margin: 0 0 6px 0;"><strong>Confidence:</strong> High confidence</p>             <p style="margin: 0;"><strong>Coordinates:</strong> 39.6542, 66.9597</p>         </div>         </div>`)[0];
+                popup_8815f825bd5078837c7d38944d291c72.setContent(html_26cc98fc7e4afa7f56a34e9ffd0e2a6e);
+            
+        
+
+        marker_610c1515e511ca8f0140f77d95074cd9.bindPopup(popup_8815f825bd5078837c7d38944d291c72)
+        ;
+
+        
+    
+    
+            marker_610c1515e511ca8f0140f77d95074cd9.bindTooltip(
+                `<div>
+                     Samarkand • High confidence
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_610c1515e511ca8f0140f77d95074cd9.setIcon(icon_623ed91f8f6975ff0778c0fbc190ae09);
+            
+    
+            var marker_eea0754e1a52ce64c991a2082a3b4249 = L.marker(
+                [41.3744, 60.3629],
+                {
+}
+            ).addTo(marker_cluster_8a4d09694bd0c37406323fb47d2b66bc);
+        
+    
+            var icon_bedb2dc7e97e807b2272a2da7d722483 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a63cc1b3b075f8854c704219888c1893 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_aa64577af89c5a6a6202143c04e7c9e9 = $(`<div id="html_aa64577af89c5a6a6202143c04e7c9e9" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 240px;">             <h4 style="margin: 0 0 8px 0;">Khwarezm (Khiva)</h4>             <p style="margin: 0 0 6px 0;"><strong>Activity:</strong> Vegetation fire hotspot in the western region</p>             <p style="margin: 0 0 6px 0;"><strong>Confidence:</strong> Low confidence</p>             <p style="margin: 0;"><strong>Coordinates:</strong> 41.3744, 60.3629</p>         </div>         </div>`)[0];
+                popup_a63cc1b3b075f8854c704219888c1893.setContent(html_aa64577af89c5a6a6202143c04e7c9e9);
+            
+        
+
+        marker_eea0754e1a52ce64c991a2082a3b4249.bindPopup(popup_a63cc1b3b075f8854c704219888c1893)
+        ;
+
+        
+    
+    
+            marker_eea0754e1a52ce64c991a2082a3b4249.bindTooltip(
+                `<div>
+                     Khwarezm (Khiva) • Low confidence
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eea0754e1a52ce64c991a2082a3b4249.setIcon(icon_bedb2dc7e97e807b2272a2da7d722483);
+            
+    
+            var marker_379aa506055b429914203a310979e399 = L.marker(
+                [37.2164, 67.2783],
+                {
+}
+            ).addTo(marker_cluster_8a4d09694bd0c37406323fb47d2b66bc);
+        
+    
+            var icon_662c2e002626c088922a91529914117c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4791f27bd501b76e8cb35c81b9244b64 = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_1be867ec638b039edd55b46edff4c3e7 = $(`<div id="html_1be867ec638b039edd55b46edff4c3e7" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 240px;">             <h4 style="margin: 0 0 8px 0;">Termez</h4>             <p style="margin: 0 0 6px 0;"><strong>Activity:</strong> Thermal anomaly in the border/steppe zone</p>             <p style="margin: 0 0 6px 0;"><strong>Confidence:</strong> Moderate confidence</p>             <p style="margin: 0;"><strong>Coordinates:</strong> 37.2164, 67.2783</p>         </div>         </div>`)[0];
+                popup_4791f27bd501b76e8cb35c81b9244b64.setContent(html_1be867ec638b039edd55b46edff4c3e7);
+            
+        
+
+        marker_379aa506055b429914203a310979e399.bindPopup(popup_4791f27bd501b76e8cb35c81b9244b64)
+        ;
+
+        
+    
+    
+            marker_379aa506055b429914203a310979e399.bindTooltip(
+                `<div>
+                     Termez • Moderate confidence
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_379aa506055b429914203a310979e399.setIcon(icon_662c2e002626c088922a91529914117c);
+            
+    
+            var marker_65612d70b0a26d668b1f0b26c4e59191 = L.marker(
+                [42.4531, 59.6],
+                {
+}
+            ).addTo(marker_cluster_8a4d09694bd0c37406323fb47d2b66bc);
+        
+    
+            var icon_d72c811f4cf6191c94ee9021422cc11a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1de8075a8d638f7abf3d975e329f5beb = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_69902834081e2db0a33ce6a1ec850e70 = $(`<div id="html_69902834081e2db0a33ce6a1ec850e70" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 240px;">             <h4 style="margin: 0 0 8px 0;">Nukus</h4>             <p style="margin: 0 0 6px 0;"><strong>Activity:</strong> Open-area burning and dry-land heat signal</p>             <p style="margin: 0 0 6px 0;"><strong>Confidence:</strong> High confidence</p>             <p style="margin: 0;"><strong>Coordinates:</strong> 42.4531, 59.6000</p>         </div>         </div>`)[0];
+                popup_1de8075a8d638f7abf3d975e329f5beb.setContent(html_69902834081e2db0a33ce6a1ec850e70);
+            
+        
+
+        marker_65612d70b0a26d668b1f0b26c4e59191.bindPopup(popup_1de8075a8d638f7abf3d975e329f5beb)
+        ;
+
+        
+    
+    
+            marker_65612d70b0a26d668b1f0b26c4e59191.bindTooltip(
+                `<div>
+                     Nukus • High confidence
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_65612d70b0a26d668b1f0b26c4e59191.setIcon(icon_d72c811f4cf6191c94ee9021422cc11a);
+            
+    
+            var marker_0796f01f78630bb6e0dd7e652474d910 = L.marker(
+                [40.7821, 72.3442],
+                {
+}
+            ).addTo(marker_cluster_8a4d09694bd0c37406323fb47d2b66bc);
+        
+    
+            var icon_b334a11f070b4e2f72cd9caf14dd5d71 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "fire",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c72becea6a8284e91de8e1c6b68bf9fa = L.popup({
+  "maxWidth": 280,
+});
+
+        
+            
+                var html_3e59b817b25fc52bdd2af9da9b8f5481 = $(`<div id="html_3e59b817b25fc52bdd2af9da9b8f5481" style="width: 100.0%; height: 100.0%;">         <div style="font-family: Arial, sans-serif; width: 240px;">             <h4 style="margin: 0 0 8px 0;">Andijan</h4>             <p style="margin: 0 0 6px 0;"><strong>Activity:</strong> Crop residue burning in the Fergana Valley</p>             <p style="margin: 0 0 6px 0;"><strong>Confidence:</strong> High confidence</p>             <p style="margin: 0;"><strong>Coordinates:</strong> 40.7821, 72.3442</p>         </div>         </div>`)[0];
+                popup_c72becea6a8284e91de8e1c6b68bf9fa.setContent(html_3e59b817b25fc52bdd2af9da9b8f5481);
+            
+        
+
+        marker_0796f01f78630bb6e0dd7e652474d910.bindPopup(popup_c72becea6a8284e91de8e1c6b68bf9fa)
+        ;
+
+        
+    
+    
+            marker_0796f01f78630bb6e0dd7e652474d910.bindTooltip(
+                `<div>
+                     Andijan • High confidence
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0796f01f78630bb6e0dd7e652474d910.setIcon(icon_b334a11f070b4e2f72cd9caf14dd5d71);
+            
+    
+            marker_cluster_8a4d09694bd0c37406323fb47d2b66bc.addTo(map_5f642233d8c18ff8e9066140986ff308);
+        
+    
+            var layer_control_31d9247b865817451e7c3cfc4bba1f5b_layers = {
+                base_layers : {
+                    "Satellite" : tile_layer_91513f7d305e575966ad1ff8fd128ec4,
+                    "Humanitarian Streets" : tile_layer_208608a4f595da87889ec563ba61b404,
+                },
+                overlays :  {
+                    "Fire hotspots" : marker_cluster_8a4d09694bd0c37406323fb47d2b66bc,
+                },
+            };
+            let layer_control_31d9247b865817451e7c3cfc4bba1f5b = L.control.layers(
+                layer_control_31d9247b865817451e7c3cfc4bba1f5b_layers.base_layers,
+                layer_control_31d9247b865817451e7c3cfc4bba1f5b_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_5f642233d8c18ff8e9066140986ff308);
+
+        
+</script>
+</html>
