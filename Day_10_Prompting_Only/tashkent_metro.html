@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tashkent Metro Map</title>
+  <style>
+    :root {
+      --bg: #eef1f4;
+      --paper: #ffffff;
+      --grid: rgba(0,0,0,0.05);
+      --ink: #1a2b3d;
+      --gray: #666666;
+      --gray-dark: #555555;
+      --red: #d92929;
+      --blue: #1e5bc6;
+      --green: #2e9e4b;
+      --yellow: #f5b800;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg);
+      font-family: Arial, Helvetica, sans-serif;   
+      color: var(--ink);
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+      padding: 18px;
+    }
+
+    svg {
+      display: block;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      fill: var(--ink);
+      text-anchor: middle;
+    }
+
+    .route {
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 7;
+    }
+
+    .station {
+      fill: currentColor;
+      stroke: #ffffff;
+      stroke-width: 4;
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      fill: var(--ink);
+      dominant-baseline: middle;
+    }
+
+    .label-small {
+      font-size: 10px;
+      font-weight: 700;
+      fill: var(--ink);
+      dominant-baseline: middle;
+    }
+
+    .mini-label {
+      font-size: 9px;
+      font-weight: 700;
+      fill: var(--gray);
+      dominant-baseline: middle;
+    }
+
+    .connector {
+      fill: #ffffff;
+      stroke: var(--gray-dark);
+      stroke-width: 2;
+    }
+
+    .landmark {
+      fill: none;
+      stroke: var(--gray);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .legend-box {
+      fill: rgba(255,255,255,0.72);
+      stroke: rgba(0,0,0,0.08);
+      stroke-width: 1;
+    }
+
+    .legend-label {
+      font-size: 10.5px;
+      font-weight: 700;
+      fill: var(--ink);
+    }
+
+    .legend {
+      width: 960px;
+      margin: 12px auto;
+      padding: 10px 16px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .legend-swatch {
+      width: 18px;
+      height: 12px;
+      border-radius: 3px;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .legend-transfer {
+      width: 52px;
+      height: 18px;
+      border-radius: 9px;
+      border: 2px solid #555;
+      background: #fff;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .legend-station {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid #555;
+      background: #fff;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <svg width="1000" height="860" viewBox="0 65 1000 790" style="max-height: 82vh; width: auto; max-width: 100%; display: block; margin: 0 auto;" xmlns="http://www.w3.org/2000/svg" aria-label="Tashkent metro map">
+    <rect x="0" y="0" width="1000" height="860" fill="#FFFFFF"/>
+
+    <text x="500" y="63" class="title">Tashkent metro map</text>
+
+    <!-- Yunusobod Line -->
+    <path class="route" stroke="#2E9E4B" d="M 640 100 L 640 140 L 640 180 L 640 220 L 640 260 L 640 300 L 640 340 L 640 480"/>
+
+    <!-- Chilonzor Line -->
+    <path class="route" stroke="#D92929" d="M 760 220 L 760 260 L 760 300 L 720 340 L 675 340 L 560 340 L 430 340 L 360 340 L 315 385 L 260 440 L 260 475 L 260 510 L 260 545 L 260 580 L 260 615 L 260 650 L 260 685 L 260 720 L 260 755"/>
+
+    <!-- O'zbekiston Line -->
+    <path class="route" stroke="#1E5BC6" d="M 260 160 L 300 160 L 300 205 L 345 250 L 390 285 L 430 315 L 430 420 L 430 480 L 520 480 L 610 480 L 730 480 L 730 515 L 730 550 L 730 585"/>
+
+    <!-- Aboveground Ring Line -->
+    <path class="route" stroke="#F5B800" d="M 730 615 L 730 647 L 730 679 L 730 711 L 730 743 L 730 785 L 695 785 L 635 785 L 575 785 L 515 785 L 455 785 L 395 785 L 335 785 L 260 785"/>
+
+    <!-- Station dots -->
+    <g>
+      <circle class="station" style="color:#2E9E4B" cx="640" cy="100" r="7"/>
+      <circle class="station" style="color:#2E9E4B" cx="640" cy="140" r="7"/>
+      <circle class="station" style="color:#2E9E4B" cx="640" cy="180" r="7"/>
+      <circle class="station" style="color:#2E9E4B" cx="640" cy="220" r="7"/>
+      <circle class="station" style="color:#2E9E4B" cx="640" cy="260" r="7"/>
+      <circle class="station" style="color:#2E9E4B" cx="640" cy="300" r="7"/>
+
+      <circle class="station" style="color:#D92929" cx="760" cy="220" r="7"/>
+      <circle class="station" style="color:#D92929" cx="760" cy="260" r="7"/>
+      <circle class="station" style="color:#D92929" cx="760" cy="300" r="7"/>
+      <circle class="station" style="color:#D92929" cx="560" cy="340" r="7"/>
+      <circle class="station" style="color:#D92929" cx="315" cy="385" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="440" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="475" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="510" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="545" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="580" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="615" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="650" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="685" r="7"/>
+      <circle class="station" style="color:#D92929" cx="260" cy="720" r="7"/>
+
+      <circle class="station" style="color:#1E5BC6" cx="260" cy="160" r="7"/>
+      <circle class="station" style="color:#1E5BC6" cx="345" cy="250" r="7"/>
+      <circle class="station" style="color:#1E5BC6" cx="390" cy="285" r="7"/>
+      <circle class="station" style="color:#1E5BC6" cx="430" cy="420" r="7"/>
+      <circle class="station" style="color:#1E5BC6" cx="520" cy="480" r="7"/>
+      <circle class="station" style="color:#1E5BC6" cx="730" cy="515" r="7"/>
+      <circle class="station" style="color:#1E5BC6" cx="730" cy="550" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="730" cy="647" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="730" cy="679" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="730" cy="711" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="730" cy="743" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="730" cy="785" r="7"/>
+
+
+ 
+ 
+ 
+      <circle class="station" style="color:#F5B800" cx="695" cy="785" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="635" cy="785" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="575" cy="785" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="515" cy="785" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="455" cy="785" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="395" cy="785" r="7"/>
+      <circle class="station" style="color:#F5B800" cx="335" cy="785" r="7"/>
+ 
+      <circle cx="300" cy="205" r="5.5" fill="#1E5BC6" stroke="white" stroke-width="2"/>
+    </g>
+
+    <!-- Linked-ring transfer connectors -->
+    <g>
+      <!-- Alisher Navoi (430, 323) / Pakhtakor (430, 340) -->
+      <circle cx="430" cy="323" r="9" fill="white" stroke="#1E5BC6" stroke-width="4.5"/>
+      <circle cx="430" cy="340" r="9" fill="white" stroke="#D92929" stroke-width="4.5"/>
+      <line x1="430" y1="323" x2="430" y2="340" stroke="white" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- Yunus Rajabi (640, 323) / Amir Temur xiyoboni (640, 340) -->
+      <circle cx="640" cy="323" r="9" fill="white" stroke="#2E9E4B" stroke-width="4.5"/>
+      <circle cx="640" cy="340" r="9" fill="white" stroke="#D92929" stroke-width="4.5"/>
+      <line x1="640" y1="323" x2="640" y2="340" stroke="white" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- Oybek (623, 480) / Ming O'rik (640, 480) -->
+      <circle cx="623" cy="480" r="9" fill="white" stroke="#1E5BC6" stroke-width="4.5"/>
+      <circle cx="640" cy="480" r="9" fill="white" stroke="#2E9E4B" stroke-width="4.5"/>
+      <line x1="623" y1="480" x2="640" y2="480" stroke="white" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- Do'stlik (730, 585) / Technopark (730, 602) -->
+      <circle cx="730" cy="585" r="9" fill="white" stroke="#1E5BC6" stroke-width="4.5"/>
+      <circle cx="730" cy="602" r="9" fill="white" stroke="#F5B800" stroke-width="4.5"/>
+      <line x1="730" y1="585" x2="730" y2="602" stroke="white" stroke-width="5" stroke-linecap="round"/>
+
+      <!-- Chinor (260, 768) / Kipchak (260, 785) -->
+      <circle cx="260" cy="768" r="9" fill="white" stroke="#D92929" stroke-width="4.5"/>
+      <circle cx="260" cy="785" r="9" fill="white" stroke="#F5B800" stroke-width="4.5"/>
+      <line x1="260" y1="768" x2="260" y2="785" stroke="white" stroke-width="5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Green labels -->
+    <g>
+      <text x="625" y="104" class="label" text-anchor="end">Turkiston</text>
+      <text x="625" y="140" class="label" text-anchor="end">Yunusobod</text>
+      <text x="625" y="180" class="label" text-anchor="end">Shahriston</text>
+      <text x="625" y="220" class="label" text-anchor="end">Bodomzor</text>
+      <text x="625" y="260" class="label" text-anchor="end">Minor</text>
+
+
+      <text x="625" y="320" class="label" text-anchor="end">Yunus Rajabiy</text>
+      <text x="655" y="468" class="label" text-anchor="start">Ming O'rik</text>
+      <text x="625" y="288" class="label" text-anchor="end">Abdulla Qodiriy</text>
+    </g>
+
+    <!-- Red labels -->
+    <g>
+      <text x="775" y="220" class="label">Buyuk Ipak Yuli</text>
+      <text x="775" y="260" class="label">Pushkin</text>
+      <text x="775" y="300" class="label">Hamid Olimjon</text>
+      <text x="655" y="358" class="label" text-anchor="start">Amir Temur xiyoboni</text>
+      <text x="555" y="362" class="label" text-anchor="middle">Mustaqillik maydoni</text>
+      <text x="415" y="362" class="label" text-anchor="end">Pakhtakor</text>
+      <text x="300" y="378" class="label" text-anchor="end">Xalqlar Do'stligi</text>
+      <text x="245" y="440" class="label" text-anchor="end">Milliy Bog'</text>
+      <text x="275" y="475" class="label" text-anchor="start">Novza</text>
+      <text x="275" y="510" class="label" text-anchor="start">Mirzo Ulug'bek</text>
+      <text x="275" y="545" class="label" text-anchor="start">Chilonzor</text>
+      <text x="275" y="580" class="label" text-anchor="start">Olmazor</text>
+      <text x="275" y="615" class="label" text-anchor="start">Choshtepa</text>
+      <text x="275" y="650" class="label" text-anchor="start">O'zgarish</text>
+      <text x="275" y="685" class="label" text-anchor="start">Sergeli</text>
+      <text x="275" y="720" class="label" text-anchor="start">Yangihayot</text>
+      <text x="275" y="755" class="label" text-anchor="start">Chinor</text>
+    </g>
+
+    <!-- Blue labels -->
+    <g>
+      <text x="245" y="164" class="label" text-anchor="end">Beruni</text>
+      <text x="315" y="209" class="label" text-anchor="start">Tinchlik</text>
+      <text x="360" y="254" class="label" text-anchor="start">Chorsu</text>
+      <text x="405" y="289" class="label" text-anchor="start">G'afur G'ulom</text>
+      <text x="415" y="318" class="label" text-anchor="end">Alisher Navoi</text>
+      <text x="445" y="424" class="label" text-anchor="start">O'zbekiston</text>
+      <text x="520" y="468" class="label" text-anchor="middle">Kosmonavtlar</text>
+      <text x="610" y="502" class="label" text-anchor="middle">Oybek</text>
+      <text x="715" y="505" class="label" text-anchor="end">Toshkent</text>
+      <text x="715" y="545" class="label" text-anchor="end">Mashinasozlar</text>
+      <text x="715" y="585" class="label" text-anchor="end">Do'stlik</text>
+    </g>
+
+    <!-- Yellow labels -->
+    <g>
+      <text x="748" y="615" class="label-small" text-anchor="start">Technopark</text>
+      <text x="748" y="647" class="label-small" text-anchor="start">Yashnobod</text>
+      <text x="748" y="679" class="label-small" text-anchor="start">Tuzel</text>
+      <text x="748" y="711" class="label-small" text-anchor="start">Olmos</text>
+      <text x="748" y="743" class="label-small" text-anchor="start">Rohat</text>
+      <text x="748" y="805" class="label-small" text-anchor="start">Yangiobod</text>
+      <text x="695" y="805" class="label-small" text-anchor="middle">Qo'yliq</text>
+      <text x="635" y="805" class="label-small" text-anchor="middle">Matonat</text>
+      <text x="575" y="805" class="label-small" text-anchor="middle">Qiyot</text>
+      <text x="515" y="805" class="label-small" text-anchor="middle">Tolariq</text>
+      <text x="455" y="805" class="label-small" text-anchor="middle">Xonobod</text>
+      <text x="395" y="805" class="label-small" text-anchor="middle">Quruvchilar</text>
+      <text x="335" y="805" class="label-small" text-anchor="middle">Turon</text>
+      <text x="260" y="805" class="label-small" text-anchor="middle">Qipchoq</text>
+    </g>
+
+    <!-- Landmarks -->
+    <g>
+      <g transform="translate(465 625) rotate(45) scale(1.8)" class="landmark" style="stroke:#7A6352; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round;">
+        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="#7A6352" stroke="#7A6352"/>
+      </g>
+      <text x="500" y="662" text-anchor="start" font-size="14" font-weight="600" fill="#555">Tashkent airport</text>
+    </g>
+
+    <!-- Legend -->
+  </svg>
+
+  <div class="legend">
+    <div class="legend-item">
+      <span class="legend-swatch" style="background:#2E9E4B;"></span>
+      <span class="legend-label">Yunusobod Line</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-swatch" style="background:#D92929;"></span>
+      <span class="legend-label">Chilonzor Line</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-swatch" style="background:#1E5BC6;"></span>
+      <span class="legend-label">O'zbekiston Line</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-swatch" style="background:#F5B800;"></span>
+      <span class="legend-label">Aboveground ring line</span>
+    </div>
+    <div class="legend-item">
+      <svg width="52" height="18" viewBox="0 0 52 18" aria-label="Transfer station">
+        <line x1="10" y1="9" x2="42" y2="9" stroke="white" stroke-width="5"/>
+        <circle cx="10" cy="9" r="8" fill="white" stroke="#555" stroke-width="3"/>
+        <circle cx="42" cy="9" r="8" fill="white" stroke="#555" stroke-width="3"/>
+      </svg>
+      <span class="legend-label">Transfer station</span>
+    </div>
+    <div class="legend-item">
+      <span class="legend-station"></span>
+      <span class="legend-label">Station name</span>
+    </div>
+  </div>
+
+  <!-- Transfer stations use linked double-ring markers only. -->
+</body>
+</html>
