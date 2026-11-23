@@ -23,7 +23,7 @@ Inspired by Jorge Luis Borges' 1946 short story *On Exactitude in Science* (*Del
 
 ## 📂 Folder Directory
 * 🖼️ `palestine_every_building.png`: Optimized high-resolution Borgesian map of **1,889,166** buildings in Palestine.
-* 🐍 `palestine_buildings.py`: Python script with DuckDB SQL queries, GeoPandas spatial clipping, and Matplotlib rendering.
+*  🇵🇸 `palestine_buildings.py`: Python script with DuckDB SQL queries, GeoPandas spatial clipping, and Matplotlib rendering.
 * 📄 `README.md`: Project documentation and data attribution.
 
 ---
