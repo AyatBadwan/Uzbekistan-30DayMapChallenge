@@ -2,9 +2,6 @@
 
 An interactive multispectral false-colour exploration of **Uzbekistan** built in **Google Earth Engine** using **Copernicus Sentinel-2** summer composites (`July–August 2025`) and **Google Cloud Score+**—turning invisible near-infrared (`NIR`) and short-wave infrared (`SWIR`) wavelengths into vivid colours that reveal living crops, water bodies, urban areas, and soil salinity 🇺🇿✨
 
-<p align="center">
-  <img src="Ferghana_Valley_Infrared.png" alt="Ferghana Valley False-Colour Infrared Satellite Map" width="100%">
-</p> 
 
 🗺️ **[Explore the Interactive Map in Google Earth Engine]: https://code.earthengine.google.com/e6d94ae73959bcab2048019df95f82e2**
 
